@@ -1,4 +1,4 @@
-class testLogin {
+class LoginPage {
 
     get header(){
         return cy.get('h2')
@@ -16,18 +16,23 @@ class testLogin {
         return cy.get('#password');
     }
 
+    get errorUserMessage() {
+        return cy.get('#error');
+    }
+
+    get errorPassMessage() {
+        return cy.get('#error');
+    }
+
     get submitButton() {
         return cy.get('#submit');
     }
 
-    get logOutButton() {
-        return cy.get('a[href="https://practicetestautomation.com/practice-test-login/"]');
-    }
+    get clickOnLogout() {
+        return cy.contains('Log out');
 
-    visit(){
-    cy.visit('https://practicetestautomation.com/practice-test-login/')
     }
 
 }
 
-export default testLogin;
+export default LoginPage;
