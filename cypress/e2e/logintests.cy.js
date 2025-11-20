@@ -25,14 +25,11 @@ login.usernameErrorMessage().should('be.visible');
 login.usernameErrorMessage().should('have.text', data.InvalidUserMesasage);
 });
 
-it.only('Test case 3: Negative password test', () => {
+it('Test case 3: Negative password test', () => {
 login.usernameField().type(data.validUser);
 login.passwordField().type(data.invalidPassword);
 login.submitButton().click();
 login.passwordErrorMessage().should('be.visible');
 login.passwordErrorMessage().should('have.text', data.InvalidPasswordMessage);
 });
-
-
-
 });
