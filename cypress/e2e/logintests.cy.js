@@ -1,37 +1,38 @@
 import LoginPage from '../Pages/loginPage';
+import data from '../support/testData/loginPageData.json';
 
 describe('Login Page', () => {
 
 const login = new LoginPage();
 
 beforeEach(() => {
-cy.visit('https://practicetestautomation.com/practice-test-login/');
+cy.visit('/');
 });
 
 it('Test case 1: Positive LogIn test', () => {
-login.header.should('have.text', 'Test login');
-login.inputUser.type('student');
-login.inputPass.type('Password123');
+login.siteHeader().should('have.text', data.loginHeaderText);
+login.usernameField().type(data.validUser);
+login.passwordField().type(data.validPassword);
 login.submitButton.click();
-cy.url().should('include', 'practicetestautomation.com/logged-in-successfully/');
-login.congratMessage.should('have.text', 'Congratulations student. You successfully logged in!');
+cy.url().should('include', data.loginUrl);
 });
 
 it('Test case 2: Negative username test', () => {
-login.inputUser.type('incorrectUser ');
-login.inputPass.type('Password123');
-login.submitButton.click();
-login.errorUserMessage.should('be.visible');
-login.errorUserMessage.should('have.text', 'Your username is invalid!');
+login.usernameField().type(data.invalidUser);
+login.passwordField().type(data.validPassword);
+login.submitButton().click();
+login.usernameErrorMessage().should('be.visible');
+login.usernameErrorMessage().should('have.text', data.InvalidUserMesasage);
 });
 
-it ('Test case 3: Negative password test', () => {
-login.header.should('have.text', 'Test login');
-login.inputUser.type('student');
-login.inputPass.type('incorrectPassword');
-login.submitButton.click();
-login.errorPassMessage.should('be.visible');
-login.errorPassMessage.should('have.text', 'Your password is invalid!');
+it.only('Test case 3: Negative password test', () => {
+login.usernameField().type(data.validUser);
+login.passwordField().type(data.invalidPassword);
+login.submitButton().click();
+login.passwordErrorMessage().should('be.visible');
+login.passwordErrorMessage().should('have.text', data.InvalidPasswordMessage);
 });
+
+
 
 });

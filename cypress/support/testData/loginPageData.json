@@ -1,0 +1,11 @@
+{
+"validUser": "student",
+"validPassword": "Password123",
+"invalidUser": "incorrectUser",
+"invalidPassword": "incorrectPassword",
+"loginHeaderText": "Test login",
+"InvalidUserMesasage": "Your username is invalid!",
+"InvalidPasswordMessage": "Your password is invalid!",
+"loginUrl": "logged-in-successfully/"
+
+}

@@ -1,37 +1,20 @@
 class LoginPage {
 
-    get header(){
-        return cy.get('h2')
-    }
+    siteHeader = () => cy.get('section#login h2')
 
-    get congratMessage(){
-        return cy.get('p')
-    }
+    loginSuccesText = () => cy.get('p')
 
-    get inputUser() {
-        return cy.get('#username');
-    }
+    usernameField = () => cy.get('#username');
 
-    get inputPass() {
-        return cy.get('#password');
-    }
+    passwordField = () => cy.get('#password');
 
-    get errorUserMessage() {
-        return cy.get('#error');
-    }
+    submitButton = () => cy.get('#submit');
 
-    get errorPassMessage() {
-        return cy.get('#error');
-    }
+    usernameErrorMessage = () => cy.get('#error'); 
 
-    get submitButton() {
-        return cy.get('#submit');
-    }
+    passwordErrorMessage = () => cy.get('#error'); 
 
-    get clickOnLogout() {
-        return cy.contains('Log out');
-
-    }
+    logoutButton = () => cy.contains('Log out');
 
 }
 
